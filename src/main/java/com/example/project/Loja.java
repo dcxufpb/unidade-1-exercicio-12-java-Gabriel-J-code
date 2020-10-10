@@ -48,8 +48,49 @@ public class Loja {
     }
 
     public String dadosLoja() {
-		// Implemente aqui
-		return null;
+
+        validarCamposObrigatorios();		
+		
+		String _TELEFONE = "";
+		if(!isEmpty(this.getTelefone())){
+			_TELEFONE = "Tel " + this.getTelefone();
+
+			if(!isEmpty(this.endereco.getCep())){
+				_TELEFONE = " " + _TELEFONE;
+			}
+		}		
+	
+		String _OBSERVACAO = "";
+		if (!isEmpty(this.getObservacao())){
+			_OBSERVACAO = this.getObservacao();
+		}
+
+		String BREAK = System.lineSeparator();
+
+		String nota = String.format("%s",this.getNomeLoja()) + BREAK;		
+		nota += String.format("%s%s",this.endereco.dadosEndereco(),_TELEFONE) + BREAK;
+		nota += String.format("%s",_OBSERVACAO) + BREAK;
+		nota += String.format("CNPJ: %s",this.getCnpj()) + BREAK;
+		nota += String.format("IE: %s",this.getInscricaoEstadual()) + BREAK;
+	
+        return nota;
+    }
+
+    public void validarCamposObrigatorios(){
+        if (isEmpty(this.getNomeLoja())) {
+			throw new RuntimeException("O campo nome da loja é obrigatório");		
+		}		
+		if (isEmpty(this.getCnpj())){
+			throw new RuntimeException("O campo cnpj da loja é obrigatório");
+		} 
+		if (isEmpty(this.getInscricaoEstadual())){
+			throw new RuntimeException("O campo inscrição estadual da loja é obrigatório");
+		}
+    }
+    private static boolean isEmpty(String s){
+		if (s == null) return true;
+		if (s.equals("")) return true;
+		return false;
 	}
 
 }
