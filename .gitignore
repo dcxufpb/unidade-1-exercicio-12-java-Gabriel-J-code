@@ -1,3 +1,12 @@
 build/
 .gradle/
 /target/
+.classpath
+.project
+.settings/org.eclipse.buildship.core.prefs
+bin/main/com/example/project/Endereco.class
+bin/main/com/example/project/Loja.class
+bin/test/com/example/project/TestLoja.class
+bin/main/com/example/project/Coordenador.class
+bin/main/com/example/project/Departamento.class
+bin/test/com/example/project/TestDepartamento.class
